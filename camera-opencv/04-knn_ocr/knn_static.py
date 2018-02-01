@@ -52,9 +52,9 @@ print "newcomer: ", newcomer, "\n"
 plt.scatter(newcomer[:,0], newcomer[:,1], 300, 'g', 'o')
 
 # Train & find nearest k-Nearest Neighbors
-knn = cv2.KNearest()
-knn.train(train, train_labels)
-ret, results, neighbors, dist = knn.find_nearest(newcomer, 3)
+knn = cv2.ml.KNearest_create()
+knn.train(train, cv2.ml.ROW_SAMPLE, train_labels)
+ret, results, neighbors, dist = knn.findNearest(newcomer, 3)
 
 print "result: ", results, "\n"
 print "neighbors: ", neighbors, "\n"

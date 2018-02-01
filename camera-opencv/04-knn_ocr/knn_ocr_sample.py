@@ -1,4 +1,5 @@
 #!/usr/bin/python
+'''
 #
 # knn_ocr_sample.py
 # Test the sample data from digits.png and save the result
@@ -7,7 +8,7 @@
 # Date   : 2016/11/17
 # Origin : http://arbu00.blogspot.tw/2016/11/1-opencv-knn.html
 # Usage  : python knn_ocr_sample.py
-
+'''
 import numpy as np
 import cv2
 from matplotlib import pyplot as plt
@@ -31,9 +32,9 @@ train_labels = np.repeat(k,250)[:, np.newaxis]
 test_labels = train_labels.copy()
 
 # Initiate kNN, train the data, then test it with test data for k=5
-knn = cv2.KNearest()
-knn.train(train, train_labels)
-ret, result, neighbours, dist = knn.find_nearest(test, k=5)
+knn = cv2.ml.KNearest_create()
+knn.train(train, cv2.ml.ROW_SAMPLE, train_labels)
+ret, result, neighbours, dist = knn.findNearest(test, k=5)
 
 # Now we check the accuracy of classification
 # For that, compare the result with test_labels and check which are wrong

@@ -18,8 +18,8 @@ with np.load('knn_data.npz') as data:
     train_labels = data['train_labels']
 
 # Initiate kNN, train the data
-knn = cv2.KNearest()
-knn.train(train, train_labels)
+knn = cv2.ml.KNearest_create()
+knn.train(train, cv2.ml.ROW_SAMPLE, train_labels)
  
 input_number, image_number, image_result = [None]*10, [None]*10, [None]*10
 test_number, result, result_str = [None]*10, [None]*10, [None]*10
@@ -31,7 +31,7 @@ for i in range(10):
 for i in range(10):  
     image_number[i] = cv2.imread( 'data/' + input_number[i], 0)
     test_number[i]  = image_number[i][:,:].reshape(-1, 400).astype(np.float32) # size = (1, 400)
-    ret, result[i], neighbours, dist = knn.find_nearest(test_number[i], k=5)
+    ret, result[i], neighbours, dist = knn.findNearest(test_number[i], k=5)
     image_result[i] = np.zeros((64, 64, 3), np.uint8)
     image_result[i][:,:] = [255, 255, 255]
     result_str[i] = str(result[i][0][0].astype(np.int32))
