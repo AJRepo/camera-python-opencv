@@ -6,6 +6,7 @@
 #
 # Author : Ashing Tsai
 # Date   : 2016/11/17
+# Original Source: https://docs.opencv.org/3.4.0/d8/d4b/tutorial_py_knn_opencv.html
 # Origin : http://arbu00.blogspot.tw/2016/11/1-opencv-knn.html
 # Usage  : python knn_ocr_sample.py
 '''
